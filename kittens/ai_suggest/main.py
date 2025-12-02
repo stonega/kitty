@@ -3,7 +3,7 @@
 
 import os
 import sys
-from typing import Any
+
 
 from kitty.typing_compat import BossType, KeyEventType, ScreenSize
 
@@ -58,8 +58,8 @@ class AISuggestHandler(Handler):
 def call_gemini_api(description: str) -> str:
     """Call Gemini API to get command suggestion."""
     import json
-    import urllib.request
     import urllib.error
+    import urllib.request
 
     api_key = os.environ.get('GEMINI_API_KEY')
     if not api_key:
