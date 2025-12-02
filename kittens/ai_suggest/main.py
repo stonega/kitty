@@ -92,7 +92,7 @@ Now provide the command for: {description}"""
     model_names = ['gemini-2.0-flash-exp', 'gemini-1.5-flash']
     # Note: When gemini-2.5-flash becomes available, add 'gemini-2.5-flash' to the beginning of the list
     last_error = None
-    
+
     for model_name in model_names:
         try:
             url = f'https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}'
@@ -125,7 +125,7 @@ Now provide the command for: {description}"""
             if '404' in str(e) or 'not found' in str(e).lower():
                 continue
             last_error = e
-    
+
     # If all models failed
     if last_error:
         raise Exception(f'Failed to call Gemini API with any available model. Last error: {str(last_error)}')
@@ -141,7 +141,7 @@ def main(args: list[str]) -> str | None:
     finally:
         handler.write(RESTORE_CURSOR)
         handler.cmd.clear_to_end_of_screen()
-    
+
     description = handler.description
     if not description:
         return None
@@ -160,11 +160,11 @@ def handle_result(args: list[str], command: str | None, target_window_id: int, b
     """Send the AI-suggested command to the terminal."""
     if command is None:
         return
-    
+
     window = boss.window_id_map.get(target_window_id)
     if window is None:
         return
-    
+
     # Send command to terminal at cursor position
     window.write_to_child(command)
 
