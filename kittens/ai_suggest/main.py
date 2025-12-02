@@ -4,7 +4,6 @@
 import os
 import sys
 
-
 from kitty.typing_compat import BossType, KeyEventType, ScreenSize
 
 from ..tui.handler import Handler, result_handler
